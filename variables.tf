@@ -9,3 +9,8 @@ variable "vpc_name" {
 variable "autoscale_route53zone_arn" {
   description = "The ARN of route53 zone associated with autoscaling group"
 }
+
+variable "lambda_file" {
+  description = "Path to Lambda file that will override default"
+  default     = ""
+}

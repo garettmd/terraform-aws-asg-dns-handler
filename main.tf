@@ -90,7 +90,7 @@ resource "aws_iam_role_policy" "lifecycle_policy" {
 data "aws_iam_policy_document" "lifecycle_policy" {
   "statement" {
     effect    = "Allow"
-    actions   = ["sns:Publish", "autoscaling:CompleteLifecycleAction",]
+    actions   = ["sns:Publish", "autoscaling:CompleteLifecycleAction"]
     resources = ["${aws_sns_topic.autoscale_handling.arn}"]
   }
 }
@@ -132,7 +132,7 @@ resource "aws_sns_topic_subscription" "autoscale_handling" {
     "aws_lambda_permission.autoscale_handling",
   ]
 
-  topic_arn = "${aws_sns_topic.autoscale_handling.arn}"
+  topic_arn = "${aws_sns_topic.autoscale_handling.id}"
   protocol  = "lambda"
   endpoint  = "${aws_lambda_function.autoscale_handling.arn}"
 }
